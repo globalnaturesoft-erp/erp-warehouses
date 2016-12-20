@@ -1,6 +1,16 @@
 vi:
+  layouts:
+    erp:
+      backend:
+        sidebar:
+          warehouse_management: "Quản lý kho bãi"
+          warehouse: "Kho bãi"
+          warehouses: "Danh sách kho bãi"
+        mega_menu:
+          configuration: "Cấu hình"
+          warehouses: "Danh sách kho bãi"
   erp:
-    warehouses: 
+    warehouses:
       backend:
         warehouses:
           index:
