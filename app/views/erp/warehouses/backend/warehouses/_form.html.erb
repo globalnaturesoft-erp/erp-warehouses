@@ -1,0 +1,44 @@
+<%= form_for([erp_warehouses, :backend, warehouse]) do |f| %>    
+    <%= erp_form_control("text", {
+        name: 'warehouse[name]',
+        value: warehouse.name,                   
+        label: t('.name'),
+        required: true,
+        errors: warehouse.errors.full_messages_for(:name)
+    }) %>
+    <%= erp_form_control("text", {
+        name: 'warehouse[short_name]',
+        value: warehouse.short_name,                   
+        label: t('.short_name'),
+        required: true,
+        errors: warehouse.errors.full_messages_for(:short_name)
+    }) %>
+    <%= erp_form_control("dataselect", {
+        name: 'warehouse[contact_id]',
+        value: warehouse.contact_id,
+        text: !warehouse.contact.nil? ? warehouse.contact.name : "",
+        label: t('.address'),
+        placeholder: t('.select_address'),
+        url: erp_contacts.dataselect_backend_contacts_path(format: 'json'),
+        create: {
+            url: erp_contacts.new_backend_contact_url,
+            title: t('.create'),
+            container_selector: '.new_contact',
+            input_selector: 'input[name="contact[name]"]',
+            modal_size: "full"
+      },
+      edit: {
+            url: erp_contacts.edit_backend_contact_url(id: ':value'),
+            title: t('.edit'),
+            container_selector: '.edit_contact',
+        }
+    }) %>
+    <hr>
+    <%= erp_component('button/save', {
+        text: t('.submit')
+    }) %>
+    <%= erp_component('button/cancel', {
+        text: t('.cancel'),
+        href: erp_warehouses.backend_warehouses_path
+    }) %>
+<% end %>

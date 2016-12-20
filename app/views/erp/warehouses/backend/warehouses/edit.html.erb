@@ -1,0 +1,40 @@
+<% content_for :title do %>
+    <%= t('.edit') %>
+<% end %>
+
+<% content_for :page_title do %>    
+    <a href="<%= erp_warehouses.backend_warehouses_path %>">
+    <i class="fa fa-users"></i> <%= t('.warehouses') %>
+    </a> / <%= t('.edit') %>: <%= @warehouse.name %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+        <%= erp_component('button/create', {
+        text: t('.create'),
+        href: erp_warehouses.new_backend_warehouse_path,
+        class: 'btn-sm'
+    }) %>
+<% end %>
+
+<% content_for :page_toolbar do %>
+    <div class="btn-group">
+        <div class="clearfix">
+        </div>
+    </div>
+<% end %>
+
+<div class="row">
+    <div class="col-md-6">
+        <% if @warehouse.errors.any? %>
+            <%= erp_form_control("form_error_message") %>
+        <% end %>
+        
+        <!-- BEGIN SAMPLE FORM PORTLET-->
+        <div class="portlet light bordered">
+            <div class="portlet-body">
+                <%= render 'form', warehouse: @warehouse %>
+            </div>
+        </div>
+        <!-- END SAMPLE FORM PORTLET-->
+    </div>
+</div>

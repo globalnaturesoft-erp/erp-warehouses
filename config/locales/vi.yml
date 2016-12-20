@@ -1,0 +1,52 @@
+vi:
+  erp:
+    warehouses: 
+      backend:
+        warehouses:
+          index:
+            warehouses: "Tất cả kho"
+            create: "Thêm kho mới"
+            archive: "Ẩn khỏi danh sách"
+            unarchive: "Hiện ra danh sách"
+            delete: "Xóa kho hàng"
+            delete_confirm: "Bạn có chắc muốn xóa?"
+            name: "Tên kho"
+            short_name: "Tên ngắn"
+            status: "Trạng thái"
+            created_at: "Ngày tạo"
+          list:
+            name: "Tên kho"
+            short_name: "Tên ngắn"
+            status: "Trạng thái"
+            created_at: "Ngày tạo"
+            actions: "Thao tác"
+            archived: "Đã ẩn"
+            active: "Đang hiển thị"
+            edit: "Cập nhật thông tin"
+            delete: "Xóa kho hàng"
+            delete_confirm: "Bạn có chắc muốn xóa?"
+            no_matching_records_found: "Danh sách kho hàng hiện tại đang trống."
+          new:
+            warehouses: "Tất cả kho"
+            create: "Thêm kho mới"
+            warehouse_details: "Chi tiết kho"
+          edit:
+            warehouses: "Tất cả kho"
+            create: "Thêm kho mới"
+            edit: "Cập nhật thông tin kho"
+            warehouse_details: "Chi tiết kho"
+          form:
+            none: "Chưa chọn..."
+            name: Tên kho
+            short_name: Tên kho (viết gọn)
+            address: Địa chỉ
+            select_address: Chọn liên hệ chứa địa chỉ
+            submit: "Lưu"
+            cancel: "Hủy"
+  activerecord:
+    errors:
+      models:
+        erp/warehouses/warehouse:
+          attributes:
+            name:
+              blank: "không được trống."
