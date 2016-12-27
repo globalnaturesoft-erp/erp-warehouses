@@ -4,7 +4,7 @@ module Erp
   module Warehouses
     module Backend
       class WarehousesController < Erp::Backend::BackendController
-        before_action :set_warehouse, only: [:show, :edit, :update, :destroy, :archive, :unarchive]
+        before_action :set_warehouse, only: [:archive, :unarchive, :show, :edit, :update, :destroy]
         before_action :set_warehouses, only: [:delete_all, :archive_all, :unarchive_all]
     
         # GET /warehouses
@@ -45,7 +45,7 @@ module Erp
                 value: @warehouse.id
               }              
             else
-              redirect_to erp_warehouses.edit_backend_warehouse_path(@warehouse), notice: 'Warehouse was successfully created.'
+              redirect_to erp_warehouses.edit_backend_warehouse_path(@warehouse), notice: t('.success')
             end
           else
             puts @warehouse.errors.to_json
@@ -63,7 +63,7 @@ module Erp
                 value: @warehouse.id
               }              
             else
-              redirect_to erp_warehouses.edit_backend_warehouse_path(@warehouse), notice: 'Warehouse was successfully updated.'
+              redirect_to erp_warehouses.edit_backend_warehouse_path(@warehouse), notice: t('.success')
             end
           else
             render :edit
@@ -76,7 +76,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Warehouse was successfully destroyed.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -85,11 +85,12 @@ module Erp
         
         def archive
           @warehouse.archive
+          
           respond_to do |format|
-            format.html { redirect_to erp_warehouses.backend_warehouses_path, notice: 'Warehouse was successfully archived.' }
+            format.html { redirect_to erp_warehouses.backend_warehouses_path, notice: t('.success') }
             format.json {
               render json: {
-                'message': 'Warehouse was successfully archived.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -98,11 +99,12 @@ module Erp
         
         def unarchive
           @warehouse.unarchive
+          
           respond_to do |format|
-            format.html { redirect_to erp_warehouses.backend_warehouses_path, notice: 'Warehouse was successfully active.' }
+            format.html { redirect_to erp_warehouses.backend_warehouses_path, notice: t('.success') }
             format.json {
               render json: {
-                'message': 'Warehouse was successfully active.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -116,7 +118,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Warehouses were successfully archived.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -130,7 +132,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Warehouses were successfully active.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
@@ -145,7 +147,7 @@ module Erp
           respond_to do |format|
             format.json {
               render json: {
-                'message': 'Warehouses were successfully destroyed.',
+                'message': t('.success'),
                 'type': 'success'
               }
             }
