@@ -3,10 +3,31 @@ module Erp::Warehouses
     belongs_to :creator, class_name: "Erp::User"
     belongs_to :contact, class_name: 'Erp::Contacts::Contact', foreign_key: :contact_id
     
+    validates :name, :short_name, :contact_id, :presence => true
+    
     # Filters
     def self.filter(query, params)
       params = params.to_unsafe_hash
       and_conds = []
+      
+      # show archived items condition - default: false
+      show_archived = false
+      
+      #filters
+      if params["filters"].present?
+        params["filters"].each do |ft|
+          or_conds = []
+          ft[1].each do |cond|
+            # in case filter is show archived
+            if cond[1]["name"] == 'show_archived'
+              show_archived = true
+            else
+              or_conds << "#{cond[1]["name"]} = '#{cond[1]["value"]}'"
+            end
+          end
+          and_conds << '('+or_conds.join(' OR ')+')' if !or_conds.empty?
+        end
+      end
       
       #keywords
       if params["keywords"].present?
@@ -18,7 +39,14 @@ module Erp::Warehouses
           and_conds << '('+or_conds.join(' OR ')+')'
         end
       end
-
+			
+			# join with users table for search creator
+      query = query.joins(:creator)
+      
+      # showing archived items if show_archived is not true
+      query = query.where(archived: false) if show_archived == false
+      
+      # add conditions to query
       query = query.where(and_conds.join(' AND ')) if !and_conds.empty?
       
       return query
@@ -52,11 +80,11 @@ module Erp::Warehouses
     end
     
     def archive
-			update_columns(archived: false)
+			update_attributes(archived: true)
 		end
     
     def unarchive
-			update_columns(archived: true)
+			update_attributes(archived: false)
 		end
     
     def self.archive_all
@@ -71,5 +99,11 @@ module Erp::Warehouses
     def display_name
 			short_name.present? ? short_name : name
 		end
+    
+    # display contact address name
+    def contact_address
+			contact.present? ? contact.name : ""
+		end
+    
   end
 end
