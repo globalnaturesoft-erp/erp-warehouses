@@ -22,6 +22,14 @@
         },
         {
             text: t('.short_name'), name: 'short_name'
+        },
+        {
+            text: t('creator'),
+            name: 'erp_users.name',
+            select: {
+                name: 'erp_users.id',
+                data_url: erp.dataselect_backend_users_path
+            }
         }
     ],
     actions: [
@@ -45,19 +53,30 @@
             data_confirm: t('.delete_confirm')
         }
     ],
+    filters: [
+        {
+            text: t('.archived'), name: 'show_archived', value: true, checked: false
+        }
+    ],
     columns: [
         {
             text: t('.name'), name: 'name', value: true, checked: true
         },
         {
+            text: t('.contact_address'), name: 'contact_address', value: true, checked: true
+        },
+        {
             text: t('.short_name'), name: 'short_name', value: true, checked: true
         },
         {
-            text: t('.status'), name: 'status', value: true, checked: true
+            text: t('.status'), name: 'status', value: true, checked: false
         },
         {
-            text: t('.created_at'), name: 'created_at', value: true, checked: true
+            text: t('.creator'), name: 'creator', value: true, checked: false
+        },
+        {
+            text: t('.created_at'), name: 'created_at', value: true, checked: false
         }
     ],
-    sort: { sort_by: 'erp_warehouses_warehouses.name', sort_direction: 'desc' }
+    sort: { sort_by: 'erp_warehouses_warehouses.name', sort_direction: 'asc' }
 ) %>    
