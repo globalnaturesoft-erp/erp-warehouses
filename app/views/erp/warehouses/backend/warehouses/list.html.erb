@@ -9,8 +9,13 @@
                     <%= t('.name') %>
                 </th>
             <% end %>
-            <% if get_columns(params).include?("short_name") %>
+            <% if get_columns(params).include?("contact_address") %>
                 <th>
+                    <%= t('.contact_address') %>
+                </th>
+            <% end %>
+            <% if get_columns(params).include?("short_name") %>
+                <th class="sortable" sort-by='erp_warehouses_warehouses.short_name'>
                     <%= t('.short_name') %>
                 </th>
             <% end %>
@@ -19,8 +24,13 @@
                     <%= t('.status') %>
                 </th>
             <% end %>
+            <% if get_columns(params).include?("creator") %>
+                <th>
+                    <%= t('.creator') %>
+                </th>
+            <% end %>
             <% if get_columns(params).include?("created_at") %>
-                <th class="sortable" sort-by='erp_warehouses_warehouses.created_at'>
+                <th>
                     <%= t('.created_at') %>
                 </th>
             <% end %>
@@ -34,7 +44,10 @@
                     <%= erp_datalist_check_row(id: warehouse.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                <td><%= link_to warehouse.name, [:backend, warehouse] %></td>
+                <td><%= link_to warehouse.name, erp_warehouses.edit_backend_warehouse_path(warehouse) %></td>
+                <% end %>
+                <% if get_columns(params).include?("contact_address") %>
+                <td><%= link_to warehouse.contact_address %></td>
                 <% end %>
                 <% if get_columns(params).include?("short_name") %>
                 <td><%= warehouse.short_name %></td>
@@ -48,8 +61,11 @@
                     <% end %> 
                 </td>
                 <% end %>
+                <% if get_columns(params).include?("creator") %>
+                <td></td>
+                <% end %>
                 <% if get_columns(params).include?("created_at") %>
-                <td class="center"><%= warehouse.created_at.strftime("%d/%m/%Y") %></td>
+                <td><%= warehouse.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
                 <td>
                     <%= erp_datalist_row_actions(
@@ -57,6 +73,20 @@
                             {
                                 text: '<i class="fa fa-edit"></i> '+t('.edit'),
                                 href: erp_warehouses.edit_backend_warehouse_path(warehouse)
+                            },
+                            {
+                                text: '<i class="fa fa-eye-slash"></i> '+t('.archive'),
+                                url: erp_warehouses.archive_backend_warehouses_path(id: warehouse.id),
+                                data_method: 'PUT',
+                                hide: warehouse.archived,
+                                class: 'ajax-link'
+                            },
+                            {
+                                text: '<i class="fa fa-eye"></i> '+t('.unarchive'),
+                                url: erp_warehouses.unarchive_backend_warehouses_path(id: warehouse.id),
+                                data_method: 'PUT',
+                                hide: !warehouse.archived,
+                                class: 'ajax-link'
                             },
                             { divider: true },
                             {
