@@ -3,32 +3,32 @@ vi:
     erp:
       backend:
         sidebar:
-          warehouse_management: "Quản lý kho bãi"
-          warehouse: "Kho bãi"
-          warehouses: "Danh sách kho bãi"
+          warehouse_management: "Quản lý chi nhánh"
+          warehouse: "Chi nhánh"
+          warehouses: "Danh sách chi nhánh"
         mega_menu:
           configuration: "Cấu hình"
-          warehouses: "Danh sách kho bãi"
+          warehouses: "Danh sách chi nhánh"
   erp:
     warehouses:
       backend:
         warehouses:
           index:
-            warehouses: "Tất cả kho"
-            create: "Thêm kho mới"
-            archived: "Hiện kho đã ẩn"
+            warehouses: "Tất cả chi nhánh"
+            create: "Thêm chi nhánh"
+            archived: "Hiện chi nhánh đã ẩn"
             archive: "Ẩn khỏi danh sách"
             unarchive: "Hiện ra danh sách"
-            delete: "Xóa kho hàng"
+            delete: "Xóa chi nhánh"
             delete_confirm: "Bạn có chắc muốn xóa?"
-            name: "Tên kho bãi"
+            name: "Tên chi nhánh"
             contact_address: "Địa chỉ liên hệ"
             short_name: "Tên rút gọn"
             status: "Trạng thái"
             creator: "Người tạo"
             created_at: "Ngày tạo"
           list:
-            name: "Tên kho bãi"
+            name: "Tên chi nhánh"
             contact_address: "Địa chỉ liên hệ"
             short_name: "Tên rút gọn"
             status: "Trạng thái"
@@ -40,24 +40,24 @@ vi:
             archived: "Đã ẩn"
             active: "Đang hiển thị"
             edit: "Cập nhật thông tin"
-            delete: "Xóa kho hàng"
+            delete: "Xóa chi nhánh"
             delete_confirm: "Bạn có chắc muốn xóa?"
-            no_matching_records_found: "Danh sách kho hàng hiện tại đang trống."
+            no_matching_records_found: "Danh sách chi nhánh hiện tại đang trống."
           new:
-            warehouses: "Tất cả kho"
-            create: "Thêm kho hàng"
-            warehouse_details: "Chi tiết kho"
+            warehouses: "Tất cả chi nhánh"
+            create: "Thêm chi nhánh"
+            warehouse_details: "Chi tiết chi nhánh"
           edit:
-            warehouses: "Tất cả kho"
-            create: "Thêm kho mới"
-            edit: "Cập nhật thông tin kho"
-            warehouse_details: "Chi tiết kho"
+            warehouses: "Tất cả chi nhánh"
+            create: "Thêm chi nhánh"
+            edit: "Cập nhật thông tin chi nhánh"
+            warehouse_details: "Chi tiết chi nhánh"
           form:
             none: "Chưa chọn..."
-            name: Tên kho
-            short_name: Tên kho (viết gọn)
+            name: "Tên chi nhánh"
+            short_name: Tên chi nhánh (viết gọn)
             address: Địa chỉ
-            select_address: Chọn liên hệ chứa địa chỉ
+            select_address: "Chọn liên hệ chứa địa chỉ"
             submit: "Lưu"
             cancel: "Hủy"
   activerecord:
