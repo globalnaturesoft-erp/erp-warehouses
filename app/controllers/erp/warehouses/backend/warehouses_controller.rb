@@ -157,7 +157,7 @@ module Erp
         def dataselect
           respond_to do |format|
             format.json {
-              render json: Warehouses.dataselect(params[:keyword])
+              render json: Warehouse.dataselect(params[:keyword])
             }
           end
         end
