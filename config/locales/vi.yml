@@ -18,8 +18,9 @@ vi:
             create: "Thêm chi nhánh"
             delete: "Xóa chi nhánh"
             name: "Tên chi nhánh"
-            contact_address: "Địa chỉ liên hệ"
+            contact_name: "Tên địa chỉ liên hệ"
             short_name: "Tên rút gọn"
+            warehouse_archived: "Chi nhánh đã bị ẩn"
           list:
             name: "Tên chi nhánh"
             contact_address: "Địa chỉ liên hệ"

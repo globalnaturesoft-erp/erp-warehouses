@@ -9,7 +9,7 @@
                     <%= t('.name') %>
                 </th>
             <% end %>
-            <% if get_columns(params).include?("contact_address") %>
+            <% if get_columns(params).include?("contact_name") %>
                 <th>
                     <%= t('.contact_address') %>
                 </th>
@@ -46,8 +46,8 @@
                 <% if get_columns(params).include?("name") %>
                 <td><%= link_to warehouse.name, erp_warehouses.edit_backend_warehouse_path(warehouse) %></td>
                 <% end %>
-                <% if get_columns(params).include?("contact_address") %>
-                <td><%= link_to warehouse.contact_address %></td>
+                <% if get_columns(params).include?("contact_name") %>
+                <td><%= link_to warehouse.contact_name %></td>
                 <% end %>
                 <% if get_columns(params).include?("short_name") %>
                 <td><%= warehouse.short_name %></td>
