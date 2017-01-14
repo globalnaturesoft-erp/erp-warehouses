@@ -1,18 +1,17 @@
 <% content_for :title do %>
-    <%= t('.edit') %>
+    <%= @warehouse.name %>
 <% end %>
 
 <% content_for :page_title do %>    
     <a href="<%= erp_warehouses.backend_warehouses_path %>">
-    <i class="fa fa-users"></i> <%= t('.warehouses') %>
+    <i class="fa fa-database"></i> <%= t('.warehouses') %>
     </a> / <%= @warehouse.name %>
 <% end %>
 
 <% content_for :page_toolbar do %>
-        <%= erp_component('button/create', {
+    <%= erp_component('button/create', {
         text: t('.create'),
-        href: erp_warehouses.new_backend_warehouse_path,
-        class: 'btn-sm'
+        href: erp_warehouses.new_backend_warehouse_path
     }) %>
 <% end %>
 

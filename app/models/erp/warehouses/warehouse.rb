@@ -101,7 +101,7 @@ module Erp::Warehouses
 		end
     
     # display contact address name
-    def contact_address
+    def contact_name
 			contact.present? ? contact.name : ""
 		end
     

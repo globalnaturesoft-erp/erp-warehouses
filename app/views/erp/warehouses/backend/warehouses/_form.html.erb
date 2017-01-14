@@ -16,31 +16,31 @@
     <%= erp_form_control("dataselect", {
         name: 'warehouse[contact_id]',
         value: warehouse.contact_id,
-        text: !warehouse.contact.nil? ? warehouse.contact.name : "",
+        text: warehouse.contact_name,
         label: t('.address'),
         placeholder: t('.select_address'),
         url: erp_contacts.dataselect_backend_contacts_path(format: 'json'),
         create: {
-            url: erp_contacts.new_backend_contact_url,
+            url: erp_contacts.new_backend_contact_path,
             title: t('.create'),
             container_selector: '.new_contact',
             input_selector: 'input[name="contact[name]"]',
             modal_size: "full"
         },
         edit: {
-            url: erp_contacts.edit_backend_contact_url(id: ':value'),
+            url: erp_contacts.edit_backend_contact_path(id: ':value'),
             title: t('.edit'),
             container_selector: '.edit_contact',
         },
         required: true,
-        errors: warehouse.errors.full_messages_for(:contact)
+        errors: warehouse.errors.full_messages_for(:contact_id)
     }) %>
     <hr>
     <%= erp_component('button/save', {
-        text: t('.submit')
+        text: t('submit')
     }) %>
     <%= erp_component('button/cancel', {
-        text: t('.cancel'),
+        text: t('cancel'),
         href: erp_warehouses.backend_warehouses_path
     }) %>
 <% end %>

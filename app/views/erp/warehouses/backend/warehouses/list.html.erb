@@ -15,26 +15,26 @@
                 </th>
             <% end %>
             <% if get_columns(params).include?("short_name") %>
-                <th class="sortable" sort-by='erp_warehouses_warehouses.short_name'>
+                <th>
                     <%= t('.short_name') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("status") %>
                 <th>
-                    <%= t('.status') %>
+                    <%= t('status') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("creator") %>
                 <th>
-                    <%= t('.creator') %>
+                    <%= t('creator') %>
                 </th>
             <% end %>
             <% if get_columns(params).include?("created_at") %>
-                <th>
-                    <%= t('.created_at') %>
+                <th class="sortable" sort-by='erp_warehouses_warehouses.created_at'>
+                    <%= t('created_at') %>
                 </th>
             <% end %>
-            <th width="7%"><%= t('.actions') %></th>
+            <th width="7%"><%= t('actions') %></th>
         </tr>
     </thead>
     <tbody>
@@ -55,9 +55,9 @@
                 <% if get_columns(params).include?("status") %>
                 <td>
                     <% if warehouse.archived == true %>
-                    <span class="label label-sm label-danger"><%= t('.archived') %></span>
+                    <span class="label label-sm label-danger"><%= t('archived') %></span>
                     <% else %>
-                    <span class="label label-sm label-success"><%= t('.active') %></span>
+                    <span class="label label-sm label-success"><%= t('active') %></span>
                     <% end %> 
                 </td>
                 <% end %>
@@ -71,18 +71,18 @@
                     <%= erp_datalist_row_actions(
                         [
                             {
-                                text: '<i class="fa fa-edit"></i> '+t('.edit'),
+                                text: '<i class="fa fa-edit"></i> '+t('edit'),
                                 href: erp_warehouses.edit_backend_warehouse_path(warehouse)
                             },
                             {
-                                text: '<i class="fa fa-eye-slash"></i> '+t('.archive'),
+                                text: '<i class="fa fa-eye-slash"></i> '+t('archive'),
                                 url: erp_warehouses.archive_backend_warehouses_path(id: warehouse.id),
                                 data_method: 'PUT',
                                 hide: warehouse.archived,
                                 class: 'ajax-link'
                             },
                             {
-                                text: '<i class="fa fa-eye"></i> '+t('.unarchive'),
+                                text: '<i class="fa fa-eye"></i> '+t('unarchive'),
                                 url: erp_warehouses.unarchive_backend_warehouses_path(id: warehouse.id),
                                 data_method: 'PUT',
                                 hide: !warehouse.archived,
@@ -93,7 +93,7 @@
                               text: '<i class="fa fa-trash"></i> '+t('.delete'),
                               href: erp_warehouses.backend_warehouse_path(warehouse),
                               data_method: 'DELETE',
-                              data_confirm: t('.delete_confirm'),
+                              data_confirm: t('delete_confirm'),
                               class: 'ajax-link'
                             }
                         ]

@@ -16,54 +16,40 @@ vi:
           index:
             warehouses: "Tất cả chi nhánh"
             create: "Thêm chi nhánh"
-            archived: "Hiện chi nhánh đã ẩn"
-            archive: "Ẩn khỏi danh sách"
-            unarchive: "Hiện ra danh sách"
             delete: "Xóa chi nhánh"
-            delete_confirm: "Bạn có chắc muốn xóa?"
             name: "Tên chi nhánh"
             contact_address: "Địa chỉ liên hệ"
             short_name: "Tên rút gọn"
-            status: "Trạng thái"
-            creator: "Người tạo"
-            created_at: "Ngày tạo"
           list:
             name: "Tên chi nhánh"
             contact_address: "Địa chỉ liên hệ"
             short_name: "Tên rút gọn"
-            status: "Trạng thái"
-            creator: "Người tạo"
-            created_at: "Ngày tạo"
-            actions: "Thao tác"
-            archive: "Ẩn khỏi danh sách"
-            unarchive: "Hiện ra danh sách"
-            archived: "Đã ẩn"
-            active: "Đang hiển thị"
-            edit: "Cập nhật thông tin"
             delete: "Xóa chi nhánh"
-            delete_confirm: "Bạn có chắc muốn xóa?"
             no_matching_records_found: "Danh sách chi nhánh hiện tại đang trống."
           new:
             warehouses: "Tất cả chi nhánh"
             create: "Thêm chi nhánh"
-            warehouse_details: "Chi tiết chi nhánh"
           edit:
             warehouses: "Tất cả chi nhánh"
             create: "Thêm chi nhánh"
-            edit: "Cập nhật thông tin chi nhánh"
-            warehouse_details: "Chi tiết chi nhánh"
           form:
-            none: "Chưa chọn..."
             name: "Tên chi nhánh"
-            short_name: Tên chi nhánh (viết gọn)
-            address: Địa chỉ
-            select_address: "Chọn liên hệ chứa địa chỉ"
-            submit: "Lưu"
-            cancel: "Hủy"
+            short_name: "Tên chi nhánh (viết gọn)"
+            address: "Thông tin địa chỉ"
+            select_address: "Chọn liên hệ chứa thông tin địa chỉ"
   activerecord:
     errors:
       models:
         erp/warehouses/warehouse:
           attributes:
             name:
-              blank: "không được trống."
+              blank: "không được để trống."
+            short_name:
+              blank: "không được để trống."
+            contact_id:
+              blank: "không được để trống."
+    attributes:
+      erp/warehouses/warehouse:
+        name: "Tên chi nhánh"
+        short_name: "Tên chi nhánh (viết gọn)"
+        contact_id: "Liên hệ chứa thông tin địa chỉ"
