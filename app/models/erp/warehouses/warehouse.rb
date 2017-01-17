@@ -76,7 +76,7 @@ module Erp::Warehouses
         query = query.where('LOWER(name) LIKE ? OR LOWER(short_name) LIKE ?', "%#{keyword}%", "%#{keyword}%")
       end
       
-      query = query.limit(8).map{|warehouse| {value: warehouse.id, text: warehouse.display_name} }
+      query = query.limit(8).map{|warehouse| {value: warehouse.id, text: warehouse.warehouse_name} }
     end
     
     def archive
@@ -96,7 +96,7 @@ module Erp::Warehouses
 		end
     
     # display name
-    def display_name
+    def warehouse_name
 			short_name.present? ? short_name : name
 		end
     
