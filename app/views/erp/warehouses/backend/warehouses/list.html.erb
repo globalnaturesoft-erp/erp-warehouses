@@ -44,28 +44,32 @@
                     <%= erp_datalist_check_row(id: warehouse.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                <td><%= link_to warehouse.name, erp_warehouses.edit_backend_warehouse_path(warehouse) %></td>
+                    <td><%= link_to warehouse.name, erp_warehouses.edit_backend_warehouse_path(warehouse) %></td>
                 <% end %>
                 <% if get_columns(params).include?("contact_name") %>
-                <td><%= link_to warehouse.contact_name %></td>
+                    <td><%= link_to warehouse.contact_name %></td>
                 <% end %>
                 <% if get_columns(params).include?("short_name") %>
-                <td><%= warehouse.short_name %></td>
+                    <td><%= warehouse.short_name %></td>
                 <% end %>
                 <% if get_columns(params).include?("status") %>
-                <td>
-                    <% if warehouse.archived == true %>
-                    <span class="label label-sm label-danger"><%= t('archived') %></span>
-                    <% else %>
-                    <span class="label label-sm label-success"><%= t('active') %></span>
-                    <% end %> 
-                </td>
+                    <td>
+                        <% if warehouse.archived == true %>
+                            <span class="label label-sm label-danger"><%= t('archived') %></span>
+                        <% else %>
+                            <span class="label label-sm label-success"><%= t('active') %></span>
+                        <% end %> 
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("creator") %>
-                <td></td>
+                    <td>
+                        <%= erp_component('avatar', {
+                            user: warehouse.creator
+                        }) %>
+                    </td>
                 <% end %>
                 <% if get_columns(params).include?("created_at") %>
-                <td><%= warehouse.created_at.strftime("%d/%m/%Y") %></td>
+                    <td><%= warehouse.created_at.strftime("%d/%m/%Y") %></td>
                 <% end %>
                 <td>
                     <%= erp_datalist_row_actions(
