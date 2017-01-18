@@ -1,9 +1,20 @@
 module Erp::Warehouses
   class Warehouse < ApplicationRecord
     belongs_to :creator, class_name: "Erp::User"
-    belongs_to :contact, class_name: 'Erp::Contacts::Contact', foreign_key: :contact_id
     
-    validates :name, :short_name, :contact_id, :presence => true
+    
+    validates :name, :short_name, :presence => true
+    
+    if Erp::Core.available?("contacts")
+			validates :contact_id, :presence => true
+			
+			belongs_to :contact, class_name: 'Erp::Contacts::Contact', foreign_key: :contact_id
+			
+			# display contact address name
+			def contact_name
+				contact.present? ? contact.name : ""
+			end
+		end
     
     # Filters
     def self.filter(query, params)
@@ -98,11 +109,6 @@ module Erp::Warehouses
     # display name
     def warehouse_name
 			short_name.present? ? short_name : name
-		end
-    
-    # display contact address name
-    def contact_name
-			contact.present? ? contact.name : ""
 		end
     
   end
