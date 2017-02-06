@@ -54,6 +54,11 @@ module Erp::Warehouses
 			# join with users table for search creator
       query = query.joins(:creator)
       
+      if Erp::Core.available?("contacts")
+				# join with contacts table for search contact
+				query = query.joins(:contact)
+			end
+      
       # showing archived items if show_archived is not true
       query = query.where(archived: false) if show_archived == false
       
