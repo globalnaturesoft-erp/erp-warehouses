@@ -6,51 +6,65 @@ vi:
           warehouse_management: "Quản lý chi nhánh"
           warehouse: "Chi nhánh"
           warehouses: "Danh sách chi nhánh"
-        mega_menu:
-          configuration: "Cấu hình"
-          warehouses: "Danh sách chi nhánh"
   erp:
     warehouses:
       backend:
         warehouses:
+          create:
+            success: "Thêm chi nhánh thành công."
+          update:
+            success: "Cập nhật chi nhánh thành công."
+          destroy:
+            success: "Xóa chi nhánh thành công."
+          delete_all:
+            success: "Xóa chi nhánh được chọn thành công."
+          archive:
+            success: "Ngưng sử dụng chi nhánh thành công."
+          unarchive:
+            success: "Sử dụng lại chi nhánh thành công."
+          archive_all:
+            success: "Ngưng sử dụng chi nhánh được chọn thành công."
+          unarchive_all:
+            success: "Sử dụng lại chi nhánh được chọn thành công."
           index:
-            warehouses: "Tất cả chi nhánh"
+            warehouses: "Danh sách chi nhánh"
             create: "Thêm chi nhánh"
             delete: "Xóa chi nhánh"
             name: "Tên chi nhánh"
-            contact_name: "Tên địa chỉ liên hệ"
+            contact_name: "Thông tin liên hệ"
             short_name: "Tên rút gọn"
-            warehouse_archived: "Chi nhánh đã bị ẩn"
           list:
             name: "Tên chi nhánh"
-            contact_address: "Địa chỉ liên hệ"
+            contact_address: "Thông tin liên hệ"
             short_name: "Tên rút gọn"
             delete: "Xóa chi nhánh"
             no_matching_records_found: "Danh sách chi nhánh hiện tại đang trống."
           new:
-            warehouses: "Tất cả chi nhánh"
+            warehouses: "Danh sách chi nhánh"
             create: "Thêm chi nhánh"
           edit:
-            warehouses: "Tất cả chi nhánh"
+            warehouses: "Danh sách chi nhánh"
             create: "Thêm chi nhánh"
           form:
             name: "Tên chi nhánh"
-            short_name: "Tên chi nhánh (viết gọn)"
-            address: "Thông tin địa chỉ"
-            select_address: "Chọn liên hệ chứa thông tin địa chỉ"
+            help_warehouse_name: "Tên chi nhánh đầy đủ "
+            placeholder_warehouse_name: "Nhập tên chi nhánh"
+            short_name: "Tên rút gọn"
+            help_warehouse_short_name: "Tên chi nhánh dưới dạng ngắn gọn"
+            placeholder_warehouse_short_name: "Nhập tên rút gọn"
+            warehouse_info: "Thông tin chi nhánh"
+            help_warehouse_contact_info: "Liên hệ chứa thông tin của chi nhánh"
+            select_contact: "Chọn liên hệ chứa thông tin chi nhánh"
   activerecord:
     errors:
       models:
         erp/warehouses/warehouse:
           attributes:
             name:
-              blank: "không được để trống."
-            short_name:
-              blank: "không được để trống."
+              blank: "không được trống."
             contact_id:
-              blank: "không được để trống."
+              blank: "không được trống."
     attributes:
       erp/warehouses/warehouse:
         name: "Tên chi nhánh"
-        short_name: "Tên chi nhánh (viết gọn)"
-        contact_id: "Liên hệ chứa thông tin địa chỉ"
+        contact_id: "Liên hệ chứa thông tin chi nhánh"

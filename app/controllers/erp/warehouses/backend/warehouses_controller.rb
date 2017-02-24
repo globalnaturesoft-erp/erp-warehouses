@@ -1,19 +1,12 @@
-require_dependency "erp/application_controller"
-
 module Erp
   module Warehouses
     module Backend
       class WarehousesController < Erp::Backend::BackendController
-        before_action :set_warehouse, only: [:archive, :unarchive, :show, :edit, :update, :destroy]
+        before_action :set_warehouse, only: [:archive, :unarchive, :edit, :update, :destroy]
         before_action :set_warehouses, only: [:delete_all, :archive_all, :unarchive_all]
     
         # GET /warehouses
         def index
-          @warehouses = Warehouse.all
-        end
-    
-        # GET /warehouses/1
-        def show
         end
         
         # POST /warehouses/list
@@ -48,7 +41,6 @@ module Erp
               redirect_to erp_warehouses.edit_backend_warehouse_path(@warehouse), notice: t('.success')
             end
           else
-            puts @warehouse.errors.to_json
             render :new
           end
         end
@@ -83,11 +75,11 @@ module Erp
           end
         end
         
+        # Archive /warehouses/archive?id=1
         def archive
           @warehouse.archive
           
           respond_to do |format|
-            format.html { redirect_to erp_warehouses.backend_warehouses_path, notice: t('.success') }
             format.json {
               render json: {
                 'message': t('.success'),
@@ -97,11 +89,11 @@ module Erp
           end
         end
         
+        # Unarchive /warehouses/unarchive?id=1
         def unarchive
           @warehouse.unarchive
           
           respond_to do |format|
-            format.html { redirect_to erp_warehouses.backend_warehouses_path, notice: t('.success') }
             format.json {
               render json: {
                 'message': t('.success'),
@@ -111,7 +103,7 @@ module Erp
           end
         end
         
-        # Archive /warehouses/archive_all?ids=1,2,3
+        # Archive all /warehouses/archive_all?ids=1,2,3
         def archive_all         
           @warehouses.archive_all
           
@@ -125,7 +117,7 @@ module Erp
           end          
         end
         
-        # Unarchive /warehouses/unarchive_all?ids=1,2,3
+        # Unarchive all /warehouses/unarchive_all?ids=1,2,3
         def unarchive_all
           @warehouses.unarchive_all
           

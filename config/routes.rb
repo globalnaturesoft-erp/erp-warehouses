@@ -6,10 +6,10 @@ Erp::Warehouses::Engine.routes.draw do
           post 'list'
 					get 'dataselect'
 					put 'archive'
-					put 'unarchive'
-					delete 'delete_all'
 					put 'archive_all'
+					put 'unarchive'
 					put 'unarchive_all'
+					delete 'delete_all'
         end
       end
     end

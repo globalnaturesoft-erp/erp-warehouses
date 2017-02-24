@@ -3,6 +3,8 @@
         name: 'warehouse[name]',
         value: warehouse.name,                   
         label: t('.name'),
+        help: t('.help_warehouse_name'),
+        placeholder: t('.placeholder_warehouse_name'),
         required: true,
         errors: warehouse.errors.full_messages_for(:name)
     }) %>
@@ -10,16 +12,17 @@
         name: 'warehouse[short_name]',
         value: warehouse.short_name,                   
         label: t('.short_name'),
-        required: true,
-        errors: warehouse.errors.full_messages_for(:short_name)
+        help: t('.help_warehouse_short_name'),
+        placeholder: t('.placeholder_warehouse_short_name'),
     }) %>
     <% if Erp::Core.available?("contacts") %>
         <%= erp_form_control("dataselect", {
             name: 'warehouse[contact_id]',
             value: warehouse.contact_id,
             text: warehouse.contact_name,
-            label: t('.address'),
-            placeholder: t('.select_address'),
+            label: t('.warehouse_info'),
+            help: t('.help_warehouse_contact_info'),
+            placeholder: t('.select_contact'),
             url: erp_contacts.dataselect_backend_contacts_path(format: 'json'),
             create: {
                 url: erp_contacts.new_backend_contact_path,

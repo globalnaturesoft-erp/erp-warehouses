@@ -23,7 +23,12 @@
             text: t('.short_name'), name: 'erp_warehouses_warehouses.short_name'
         },
         {
-            text: t('.contact_name'), name: 'erp_contacts_contacts.name'
+            text: t('.contact_name'),
+            name: 'erp_contacts_contacts.name',
+            select: {
+                name: 'erp_contacts_contacts.id',
+                data_url: erp_contacts.dataselect_backend_contacts_path
+            }
         },
         {
             text: t('creator'),
@@ -41,7 +46,7 @@
             data_method: 'PUT'
         },
         {
-            text: '<i class="fa fa-exclamation"></i> '+t('archive'),
+            text: '<i class="fa fa-remove"></i> '+t('archive'),
             url: erp_warehouses.unarchive_all_backend_warehouses_path,
             data_method: 'PUT'
         },
@@ -57,7 +62,7 @@
     ],
     filters: [
         {
-            text: t('.warehouse_archived'), name: 'show_archived', value: true, checked: false
+            text: t('archived'), name: 'show_archived', value: true, checked: false
         }
     ],
     columns: [
@@ -68,10 +73,10 @@
             text: t('.contact_name'), name: 'contact_name', value: true, checked: true
         },
         {
-            text: t('.short_name'), name: 'short_name', value: true, checked: true
+            text: t('.short_name'), name: 'short_name', value: true, checked: false
         },
         {
-            text: t('status'), name: 'status', value: true, checked: false
+            text: t('status'), name: 'status', value: true, checked: true
         },
         {
             text: t('creator'), name: 'creator', value: true, checked: false

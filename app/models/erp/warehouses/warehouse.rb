@@ -1,13 +1,10 @@
 module Erp::Warehouses
   class Warehouse < ApplicationRecord
     belongs_to :creator, class_name: "Erp::User"
-    
-    
-    validates :name, :short_name, :presence => true
+    validates :name, :presence => true
     
     if Erp::Core.available?("contacts")
 			validates :contact_id, :presence => true
-			
 			belongs_to :contact, class_name: 'Erp::Contacts::Contact', foreign_key: :contact_id
 			
 			# display contact address name
