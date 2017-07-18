@@ -3,58 +3,58 @@ vi:
     erp:
       backend:
         sidebar:
-          warehouse_management: "Quản lý chi nhánh"
-          warehouse: "Chi nhánh"
-          warehouses: "Danh sách chi nhánh"
+          warehouse_management: "Quản lý kho hàng"
+          warehouse: "Kho chứa hàng"
+          warehouses: "Danh sách kho hàng"
   erp:
     warehouses:
       backend:
         warehouses:
           create:
-            success: "Thêm chi nhánh thành công."
+            success: "Thêm kho hàng thành công."
           update:
-            success: "Cập nhật chi nhánh thành công."
+            success: "Cập nhật kho hàng thành công."
           destroy:
-            success: "Xóa chi nhánh thành công."
+            success: "Xóa kho hàng thành công."
           delete_all:
-            success: "Xóa chi nhánh được chọn thành công."
+            success: "Xóa kho hàng được chọn thành công."
           archive:
-            success: "Ngưng sử dụng chi nhánh thành công."
+            success: "Ngưng sử dụng kho hàng thành công."
           unarchive:
-            success: "Sử dụng lại chi nhánh thành công."
+            success: "Sử dụng lại kho hàng thành công."
           archive_all:
-            success: "Ngưng sử dụng chi nhánh được chọn thành công."
+            success: "Ngưng sử dụng kho hàng được chọn thành công."
           unarchive_all:
-            success: "Sử dụng lại chi nhánh được chọn thành công."
+            success: "Sử dụng lại kho hàng được chọn thành công."
           index:
-            warehouses: "Danh sách chi nhánh"
-            create: "Thêm chi nhánh"
-            delete: "Xóa chi nhánh"
-            name: "Tên chi nhánh"
+            warehouses: "Danh sách kho hàng"
+            create: "Thêm kho hàng"
+            delete: "Xóa kho hàng"
+            name: "Tên kho hàng"
             contact_name: "Thông tin liên hệ"
             short_name: "Tên rút gọn"
           list:
-            name: "Tên chi nhánh"
+            name: "Tên kho hàng"
             contact_address: "Thông tin liên hệ"
             short_name: "Tên rút gọn"
-            delete: "Xóa chi nhánh"
-            no_matching_records_found: "Danh sách chi nhánh hiện tại đang trống."
+            delete: "Xóa kho hàng"
+            no_matching_records_found: "Danh sách kho hàng hiện tại đang trống."
           new:
-            warehouses: "Danh sách chi nhánh"
-            create: "Thêm chi nhánh"
+            warehouses: "Danh sách kho hàng"
+            create: "Thêm kho hàng"
           edit:
-            warehouses: "Danh sách chi nhánh"
-            create: "Thêm chi nhánh"
+            warehouses: "Danh sách kho hàng"
+            create: "Thêm kho hàng"
           form:
-            name: "Tên chi nhánh"
-            help_warehouse_name: "Tên chi nhánh đầy đủ "
-            placeholder_warehouse_name: "Nhập tên chi nhánh"
+            name: "Tên kho hàng"
+            help_warehouse_name: "Tên kho hàng đầy đủ "
+            placeholder_warehouse_name: "Nhập tên kho hàng"
             short_name: "Tên rút gọn"
-            help_warehouse_short_name: "Tên chi nhánh dưới dạng ngắn gọn"
+            help_warehouse_short_name: "Tên kho hàng dưới dạng ngắn gọn"
             placeholder_warehouse_short_name: "Nhập tên rút gọn"
-            warehouse_info: "Thông tin chi nhánh"
-            help_warehouse_contact_info: "Liên hệ chứa thông tin của chi nhánh"
-            select_contact: "Chọn liên hệ chứa thông tin chi nhánh"
+            warehouse_info: "Thông tin kho hàng"
+            help_warehouse_contact_info: "Liên hệ chứa thông tin của kho hàng"
+            select_contact: "Chọn liên hệ chứa thông tin kho hàng"
   activerecord:
     errors:
       models:
@@ -66,5 +66,5 @@ vi:
               blank: "không được trống."
     attributes:
       erp/warehouses/warehouse:
-        name: "Tên chi nhánh"
-        contact_id: "Liên hệ chứa thông tin chi nhánh"
+        name: "Tên kho hàng"
+        contact_id: "Liên hệ chứa thông tin kho hàng"
