@@ -1,6 +1,6 @@
 user = Erp::User.first
 warehouses = ["ADV", "TRAINING", "TN", "SG-HCM"]
-owner = Erp::Contacts::Contact.first
+owner = Erp::Contacts::Contact.get_main_contact
 
 # Warehouses
 Erp::Warehouses::Warehouse.all.destroy_all
