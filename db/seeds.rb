@@ -1,5 +1,6 @@
 user = Erp::User.first
-warehouses = ["ADV", "TRAINING", "TN", "SG-HCM"]
+
+warehouses = ["ADV", "TRAINING", "TN", "SG-HCM", "Gửi"]
 owner = Erp::Contacts::Contact.get_main_contact
 
 # Warehouses
@@ -12,3 +13,4 @@ warehouses.each do |name|
     contact_id: owner.id
   )
 end
+
