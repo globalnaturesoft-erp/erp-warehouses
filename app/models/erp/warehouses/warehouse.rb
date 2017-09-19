@@ -116,6 +116,11 @@ module Erp::Warehouses
     def warehouse_name
 			short_name.present? ? short_name : name
 		end
-
+    
+    # all active
+    def self.all_active
+			where(archived: false)
+		end
+    
   end
 end
