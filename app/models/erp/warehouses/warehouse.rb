@@ -82,7 +82,7 @@ module Erp::Warehouses
 
     # data for dataselect ajax
     def self.dataselect(keyword='', params={})
-      query = self.all
+      query = self.where(archived: false)
 
       if keyword.present?
         keyword = keyword.strip.downcase
