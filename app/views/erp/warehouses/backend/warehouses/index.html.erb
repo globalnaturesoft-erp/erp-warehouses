@@ -7,11 +7,27 @@
 <% end %>
 
 <% content_for :page_toolbar do %>
-    <%= erp_component('button/create', {
-        text: t('.create'),
-        href: erp_warehouses.new_backend_warehouse_path
-    }) %>
+    <%=
+        erp_component('button/create', {
+            text: t('.create'),
+            href: erp_warehouses.new_backend_warehouse_path
+        }) if can? :inventory_products_warehouses_create, nil
+    %>
 <% end %>
+
+<%
+    actions = []
+    actions << {
+        text: '<i class="fa fa-remove"></i> '+t('archive'),
+        url: erp_warehouses.archive_all_backend_warehouses_path,
+        data_method: 'PUT'
+    } if false #Tạm thời ẩn
+    actions << {
+        text: '<i class="fa fa-check"></i> '+t('unarchive'),
+        url: erp_warehouses.unarchive_all_backend_warehouses_path,
+        data_method: 'PUT'
+    } if false #Tạm thời ẩn
+%>
 
 <%= erp_datalist(
     url: erp_warehouses.list_backend_warehouses_path,
@@ -39,22 +55,14 @@
             }
         }
     ],
-    actions: [
-        {
-            text: '<i class="fa fa-remove"></i> '+t('archive'),
-            url: erp_warehouses.archive_all_backend_warehouses_path,
-            data_method: 'PUT'
-        },
-        {
-            text: '<i class="fa fa-check"></i> '+t('unarchive'),
-            url: erp_warehouses.unarchive_all_backend_warehouses_path,
-            data_method: 'PUT'
-        }
-    ],
+    actions: actions,
     filters: [
         {
-            text: t('archived'), name: 'show_archived', value: true, checked: false
-        }
+            text: t('.not_archived'), name: 'erp_warehouses_warehouses.archived', value: 'false', checked: true
+        },
+        {
+            text: t('.archived'), name: 'erp_warehouses_warehouses.archived', value: 'true', checked: false
+        },
     ],
     columns: [
         {

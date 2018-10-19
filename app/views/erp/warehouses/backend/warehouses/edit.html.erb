@@ -9,10 +9,12 @@
 <% end %>
 
 <% content_for :page_toolbar do %>
-    <%= erp_component('button/create', {
-        text: t('.create'),
-        href: erp_warehouses.new_backend_warehouse_path
-    }) %>
+    <%=
+        erp_component('button/create', {
+            text: t('.create'),
+            href: erp_warehouses.new_backend_warehouse_path
+        }) if can? :creatable, @warehouse
+    %>
 <% end %>
 
 <% content_for :page_toolbar do %>

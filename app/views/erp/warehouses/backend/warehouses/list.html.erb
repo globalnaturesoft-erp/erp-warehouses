@@ -44,10 +44,10 @@
                     <%= erp_datalist_check_row(id: warehouse.id) %>
                 </td>
                 <% if get_columns(params).include?("name") %>
-                    <td><%= link_to warehouse.name, erp_warehouses.edit_backend_warehouse_path(warehouse) %></td>
+                    <td><%= warehouse.name %></td>
                 <% end %>
                 <% if get_columns(params).include?("contact_name") %>
-                    <td><%= link_to warehouse.contact_name, erp_contacts.edit_backend_contact_path(id: warehouse.contact_id), target: "_blank" %></td>
+                    <td><%= warehouse.contact_name %></td>
                 <% end %>
                 <% if get_columns(params).include?("short_name") %>
                     <td><%= warehouse.short_name %></td>
@@ -55,9 +55,9 @@
                 <% if get_columns(params).include?("status") %>
                     <td>
                         <% if warehouse.archived == true %>
-                            <span class="label label-sm label-danger"><%= t('archived') %></span>
+                            <span class="label label-sm label-danger"><%= t('.archived') %></span>
                         <% else %>
-                            <span class="label label-sm label-success"><%= t('active') %></span>
+                            <span class="label label-sm label-success"><%= t('.active') %></span>
                         <% end %> 
                     </td>
                 <% end %>
@@ -74,25 +74,28 @@
                 <td>
                     <%
                         actions = []
+                        
                         actions << {
                             text: '<i class="fa fa-edit"></i> '+t('edit'),
                             href: erp_warehouses.edit_backend_warehouse_path(warehouse)
-                        }
+                        } if can? :updatable, warehouse
+                        
                         actions << {
                             text: '<i class="fa fa-remove"></i> '+t('archive'),
                             url: erp_warehouses.archive_backend_warehouses_path(id: warehouse.id),
                             data_method: 'PUT',
-                            hide: warehouse.archived,
                             class: 'ajax-link'
-                        }
+                        } if can? :archive, warehouse
+                        
                         actions << {
                             text: '<i class="fa fa-check"></i> '+t('unarchive'),
                             url: erp_warehouses.unarchive_backend_warehouses_path(id: warehouse.id),
                             data_method: 'PUT',
-                            hide: !warehouse.archived,
                             class: 'ajax-link'
-                        }
+                        } if can? :unarchive, warehouse
+                        
                         actions << { divider: true } if Erp::Core.available?("online_store")
+                        
                         actions << {
                             text: '<i class="fa fa-trash"></i> '+t('.delete'),
                             href: erp_warehouses.backend_warehouse_path(warehouse),
@@ -101,7 +104,7 @@
                             class: 'ajax-link'
                         } if Erp::Core.available?("online_store")
                     %>
-                    <%= erp_datalist_row_actions(actions) %>
+                    <%= erp_datalist_row_actions(actions) if !actions.empty? %>
                 </td>
             </tr>
         <% end %>

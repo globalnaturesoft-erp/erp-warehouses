@@ -33,12 +33,16 @@ vi:
             name: "Tên kho hàng"
             contact_name: "Thông tin liên hệ"
             short_name: "Tên rút gọn"
+            not_archived: "Đang sử dụng"
+            archived: "Ngưng sử dụng"
           list:
             name: "Tên kho hàng"
             contact_address: "Thông tin liên hệ"
             short_name: "Tên rút gọn"
             delete: "Xóa kho hàng"
             no_matching_records_found: "Danh sách kho hàng hiện tại đang trống."
+            active: "Đang sử dụng"
+            archived: "Ngưng sử dụng"
           new:
             warehouses: "Danh sách kho hàng"
             create: "Thêm kho hàng"
